@@ -24,10 +24,13 @@ public class LunchController {
     @Autowired
     LunchService lunchService;
 
+    public LunchController(LunchService lunchService) {
+    }
+
     @PostMapping("/init-lunch")
     public ResponseEntity<LunchResponseDTO> initLunch(@RequestBody LunchRequestDTO lunchRequestDTO) {
         try {
-            Lunch lunch = new Lunch();
+            Lunch lunch = Lunch.builder().build();
             lunch.setStatus(CommonConstant.SESSION_START);
             lunch.setDescription(lunchRequestDTO.getDescription());
             lunch.setCreatedTime(LocalDateTime.now());

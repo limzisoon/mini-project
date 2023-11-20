@@ -26,7 +26,7 @@ public class MemberController {
     @Operation(method = "POST", description = "add new member",summary = "to add new member into lunch listing")
     public ResponseEntity<MemberResponseDTO> addMember(@RequestBody MemberRequestDTO memberRequestDTO) {
         try {
-            Member member = new Member();
+            Member member = Member.builder().build();
             member.setName(memberRequestDTO.getName());
             member.setLunchId(memberRequestDTO.getLunchId());
             member.setRestaurantCd(memberRequestDTO.getRestaurantCd());

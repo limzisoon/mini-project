@@ -1,10 +1,7 @@
 package com.project.demo.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 @Data
 @Entity
+@Builder
 @Table(name = "Lunch")
 public class Lunch {
 
