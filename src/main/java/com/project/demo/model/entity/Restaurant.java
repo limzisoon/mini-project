@@ -1,9 +1,6 @@
 package com.project.demo.model.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @ToString
 @Data
 @Entity
+@Builder
 @Table(name = "restaurant")
 public class Restaurant {
 

@@ -2,6 +2,8 @@ package com.project.demo.controller;
 
 import com.project.demo.model.entity.Restaurant;
 import com.project.demo.service.RestaurantService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,15 @@ import java.util.Optional;
 
 
 @RestController
+@RequiredArgsConstructor
+@Slf4j
 public class RestaurantController {
 
     @Autowired
     RestaurantService restaurantService;
+
+    public RestaurantController(RestaurantService restaurantService) {
+    }
 
     @GetMapping("/restaurants")
     public ResponseEntity<List<Restaurant>> getAllRestaurants() {
