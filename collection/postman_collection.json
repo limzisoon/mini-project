@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "46e48515-fb4c-4dc7-93eb-0391f8f9f7f6",
+		"name": "my collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12839116"
+	},
+	"item": [
+		{
+			"name": "get restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/restaurants"
+			},
+			"response": []
+		},
+		{
+			"name": "initial lunch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"description\":\"lunch planning for 2023 Nov 16\",\r\n    \"createdBy\":\"Lena\",\r\n    \"members\":[\r\n    {\"name\":\"Lena\",\"restaurantCd\":\"R001\"},\r\n    {\"name\":\"Ken\",\"restaurantCd\":\"R002\"},\r\n    {\"name\":\"Jackson\",\"restaurantCd\":\"R003\"}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/init-lunch"
+			},
+			"response": []
+		},
+		{
+			"name": "add member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"David xxxxx\",\r\n    \"lunchId\":1,\r\n    \"restaurantCd\":\"R001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/add-member"
+			},
+			"response": []
+		},
+		{
+			"name": "remove member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/remove-member/1"
+			},
+			"response": []
+		},
+		{
+			"name": "get members by restaurants",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/members/1"
+			},
+			"response": []
+		},
+		{
+			"name": "end lunch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"id\":15,\r\n    \"description\":\"lunch planning for 2023 Nov 16\",\r\n    \"createdBy\":\"Lenaxxxxxxxxxx\",\r\n    \"members\":[\r\n    {\"name\":\"Lena\",\"restaurantCd\":\"R001\"},\r\n    {\"name\":\"Ken\",\"restaurantCd\":\"R002\"},\r\n    {\"name\":\"Jackson\",\"restaurantCd\":\"R003\"}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/end-lunch"
+			},
+			"response": []
+		}
+	]
+}
