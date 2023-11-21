@@ -27,9 +27,5 @@ CREATE TABLE member (
     restaurant_cd varchar(30) NULL
 );
 
-INSERT INTO member (id, name, lunch_id, restaurant_cd) VALUES (1, 'Anson', 1, 'R001');
-INSERT INTO member (id, name, lunch_id, restaurant_cd) VALUES (2, 'Jack', 1, 'R001');
-INSERT INTO member (id, name, lunch_id, restaurant_cd) VALUES (3, 'Kelly', 1, 'R001');
-INSERT INTO member (id, name, lunch_id, restaurant_cd) VALUES (4, 'Marry', 1, 'R001');
 
 
