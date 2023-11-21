@@ -2,6 +2,7 @@ package com.project.demo.controller;
 
 import com.project.demo.model.entity.Restaurant;
 import com.project.demo.service.RestaurantService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,6 +29,8 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurants")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(method = "GET", description = "Get the full restaurant list",summary = "to get the full restaurant list")
     public ResponseEntity<List<Restaurant>> getAllRestaurants() {
         try {
             System.out.println("getAllRestaurants");
@@ -46,6 +50,8 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurants/{cd}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(method = "GET", description = "Get the restaurant information by restaurant code",summary = "Get the restaurant information by restaurant code")
     public ResponseEntity<Restaurant> getRestaurantByCd(@PathVariable("cd") String cd) {
         try {
             System.out.println("getRestaurantByCd");

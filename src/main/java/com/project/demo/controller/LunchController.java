@@ -7,11 +7,14 @@ import com.project.demo.model.entity.Member;
 import com.project.demo.model.request.LunchRequestDTO;
 import com.project.demo.model.response.LunchResponseDTO;
 import com.project.demo.service.LunchService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -27,7 +30,10 @@ public class LunchController {
     public LunchController(LunchService lunchService) {
     }
 
-    @PostMapping("/init-lunch")
+
+    @PostMapping(value = "/init-lunch", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(method = "POST", description = "initial lunch session",summary = "to initial lunch session")
     public ResponseEntity<LunchResponseDTO> initLunch(@RequestBody LunchRequestDTO lunchRequestDTO) {
         try {
             Lunch lunch = Lunch.builder().build();
@@ -45,14 +51,16 @@ public class LunchController {
         }
     }
 
-    @PostMapping("/end-lunch")
+    @PostMapping(value = "/end-lunch", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(method = "POST", description = "End lunch session",summary = "to End lunch session")
     public ResponseEntity<LunchResponseDTO> endLunch(@RequestBody LunchRequestDTO lunchRequestDTO) {
         LunchResponseDTO lunchResponseDTO = new LunchResponseDTO();
         try {
-            //validate user initial lunch session have to same with the user to end lunch session
+            //validate user initial lunch session have to be same with the user to end lunch session
             Lunch lunch = lunchService.getLunch(lunchRequestDTO.getId());
             if (!lunch.getCreatedBy().equals(lunchRequestDTO.getCreatedBy())) {
-                throw new BusinessException("User initial lunch session not same as user end lunch session");
+                throw new BusinessException(CommonConstant.BUSINESS_ERROR_1);
             }
 
             lunch.setStatus(CommonConstant.SESSION_END);
