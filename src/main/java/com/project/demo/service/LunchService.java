@@ -31,6 +31,11 @@ public class LunchService {
 
     }
 
+    public Lunch getLunch(Long id) throws Exception
+    {
+        return lunchRepository.getById(id);
+    }
+
     public LunchResponseDTO updateLunch(Lunch lunch) throws Exception
     {
         LunchResponseDTO lunchResponseDTO = new LunchResponseDTO();
@@ -43,10 +48,5 @@ public class LunchService {
 
         return lunchResponseDTO;
 
-    }
-
-    public Lunch getLunch(Long id) throws Exception
-    {
-        return lunchRepository.getById(id);
     }
 }

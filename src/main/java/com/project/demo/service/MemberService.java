@@ -21,16 +21,16 @@ public class MemberService {
     MemberRepository memberRepository;
 
     public MemberResponseDTO saveMember(Member member) throws Exception {
-        MemberResponseDTO lunchResponseDTO = new MemberResponseDTO();
+        MemberResponseDTO memberResponseDTO = new MemberResponseDTO();
         System.out.println(member.toString());
 
         memberRepository.save(member);
 
         member = memberRepository.getById(member.getId());
 
-        BeanUtils.copyProperties(member, lunchResponseDTO);
+        BeanUtils.copyProperties(member, memberResponseDTO);
 
-        return lunchResponseDTO;
+        return memberResponseDTO;
 
     }
 
