@@ -45,6 +45,24 @@ public class LunchController {
         }
     }
 
+    @PostMapping("/init-lunch2")
+    public ResponseEntity<LunchResponseDTO> initLunch2(@RequestBody LunchRequestDTO lunchRequestDTO) {
+        try {
+            Lunch lunch = Lunch.builder().build();
+            lunch.setStatus(CommonConstant.SESSION_START);
+            lunch.setDescription(lunchRequestDTO.getDescription());
+            lunch.setCreatedTime(LocalDateTime.now());
+            lunch.setLastUpdatedTime(LocalDateTime.now());
+            lunch.setCreatedBy(lunchRequestDTO.getCreatedBy());
+
+            LunchResponseDTO lunchResponseDTO = lunchService.createLunch(lunch);
+
+            return new ResponseEntity<>(lunchResponseDTO, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/end-lunch")
     public ResponseEntity<LunchResponseDTO> endLunch(@RequestBody LunchRequestDTO lunchRequestDTO) {
         LunchResponseDTO lunchResponseDTO = new LunchResponseDTO();
