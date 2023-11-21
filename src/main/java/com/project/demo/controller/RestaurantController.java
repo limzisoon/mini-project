@@ -29,6 +29,7 @@ public class RestaurantController {
     @GetMapping("/restaurants")
     public ResponseEntity<List<Restaurant>> getAllRestaurants() {
         try {
+            System.out.println("getAllRestaurants");
             List<Restaurant> restaurants = restaurantService.getRestaurants();
 
             if (restaurants.isEmpty()) {
@@ -38,6 +39,8 @@ public class RestaurantController {
 
             return new ResponseEntity<>(restaurants, HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println("Exception"+e);
+            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -45,6 +48,7 @@ public class RestaurantController {
     @GetMapping("/restaurants/{cd}")
     public ResponseEntity<Restaurant> getRestaurantByCd(@PathVariable("cd") String cd) {
         try {
+            System.out.println("getRestaurantByCd");
             Optional<Restaurant> restaurant = restaurantService.getRestaurantByCd(cd);
 
             if (restaurant.isPresent()) {
@@ -53,6 +57,8 @@ public class RestaurantController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
+            System.out.println("Exception"+e);
+            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

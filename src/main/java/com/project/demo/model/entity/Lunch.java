@@ -2,17 +2,19 @@ package com.project.demo.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
+@Entity
 @Setter
 @Getter
-@ToString
-@Data
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@DynamicInsert
 @Table(name = "Lunch")
 public class Lunch {
 

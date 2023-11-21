@@ -1,16 +1,18 @@
 package com.project.demo.model.entity;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
 
+@Entity
 @Setter
 @Getter
-@ToString
-@Data
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@DynamicInsert
 @Table(name = "restaurant")
 public class Restaurant {
 
@@ -26,4 +28,5 @@ public class Restaurant {
 
     @Column(name = "address")
     private String address;
+
 }
