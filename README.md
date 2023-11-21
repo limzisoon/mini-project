@@ -1,6 +1,6 @@
 # mini-project
 
-#### pre-requite
+#### pre-requisite
 software installation /unit-test/software installation guide.docx
 
 
