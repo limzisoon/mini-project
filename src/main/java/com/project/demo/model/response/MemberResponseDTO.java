@@ -19,4 +19,8 @@ public class MemberResponseDTO {
 
     private String restaurantCd;
 
+    private String restaurantName;
+
+    private String error;
+
 }

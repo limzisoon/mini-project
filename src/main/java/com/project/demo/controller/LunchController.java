@@ -1,7 +1,6 @@
 package com.project.demo.controller;
 
 import com.project.demo.constant.CommonConstant;
-import com.project.demo.exception.BusinessException;
 import com.project.demo.model.entity.Lunch;
 import com.project.demo.model.entity.Member;
 import com.project.demo.model.request.LunchRequestDTO;
@@ -57,17 +56,13 @@ public class LunchController {
     public ResponseEntity<LunchResponseDTO> endLunch(@RequestBody LunchRequestDTO lunchRequestDTO) {
         LunchResponseDTO lunchResponseDTO = new LunchResponseDTO();
         try {
-            //validate user initial lunch session have to be same with the user to end lunch session
             Lunch lunch = lunchService.getLunch(lunchRequestDTO.getId());
-            if (!lunch.getCreatedBy().equals(lunchRequestDTO.getCreatedBy())) {
-                throw new BusinessException(CommonConstant.BUSINESS_ERROR_1);
-            }
 
             lunch.setStatus(CommonConstant.SESSION_END);
             lunch.setDescription(lunchRequestDTO.getDescription());
             lunch.setLastUpdatedTime(LocalDateTime.now());
 
-            //random picked Restaurant from members
+            //4a.) random picked Restaurant from members
             List memberList = lunchRequestDTO.getMembers();
             if(memberList!=null&&!memberList.isEmpty())
             {

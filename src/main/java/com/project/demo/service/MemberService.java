@@ -1,8 +1,10 @@
 package com.project.demo.service;
 
 import com.project.demo.model.entity.Member;
+import com.project.demo.model.entity.Restaurant;
 import com.project.demo.model.response.MemberResponseDTO;
 import com.project.demo.repository.MemberRepository;
+import com.project.demo.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -19,6 +22,8 @@ public class MemberService {
 
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    RestaurantService restaurantService;
 
     public MemberResponseDTO saveMember(Member member) throws Exception {
         MemberResponseDTO memberResponseDTO = new MemberResponseDTO();
@@ -47,6 +52,11 @@ public class MemberService {
         for(Member member : memberList)
         {
             MemberResponseDTO memberResponseDTO = new MemberResponseDTO();
+            Optional<Restaurant> res = restaurantService.getRestaurantByCd(member.getRestaurantCd());
+            if(res.isPresent())
+            {
+                memberResponseDTO.setRestaurantName(res.get().getName());
+            }
             BeanUtils.copyProperties(member, memberResponseDTO);
             memberResponseDTOList.add(memberResponseDTO);
         }

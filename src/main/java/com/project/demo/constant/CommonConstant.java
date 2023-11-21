@@ -10,5 +10,5 @@ public class CommonConstant {
     public static final String SESSION_END = "END";
 
     //business error
-    public static final String BUSINESS_ERROR_1 = "User initial lunch session not same as user end lunch session";
+    public static final String BUSINESS_ERROR_1 = "Lunch session is end, unable to join";
 }
