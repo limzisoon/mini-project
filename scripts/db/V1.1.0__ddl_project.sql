@@ -9,6 +9,7 @@ INSERT INTO restaurant (id, code, name, address) VALUES (1, 'R001', 'Kopitiam', 
 INSERT INTO restaurant (id, code, name, address) VALUES (2, 'R002', 'FoodPark', '69 Bedok South Avenue 3, 460069 Singapore');
 INSERT INTO restaurant (id, code, name, address) VALUES (3, 'R003', 'Koufu', '168 Punggol Fld, #01-01 Punggol Plaza, 820168 Singapore');
 INSERT INTO restaurant (id, code, name, address) VALUES (4, 'R004', 'S11', '504 Bishan Street 11, #01-444, 570504 Singapore');
+INSERT INTO restaurant (id, code, name, address) VALUES (5, 'R005', 'KFC Restaurant', '11 Rivervale Crescent, #01-36, Rivervale Mall, 545082 Singapore');
 
 CREATE TABLE Lunch (
     id integer  NULL,
