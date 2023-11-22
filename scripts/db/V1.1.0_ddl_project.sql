@@ -1,3 +1,6 @@
+-- connect to db via Dbeaver
+-- execute the script
+
 CREATE TABLE restaurant (
     id integer NOT NULL,
     code varchar(20)  NOT NULL,

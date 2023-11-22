@@ -1,8 +1,8 @@
 # mini-project
 
 #### pre-requisite
-software installation /unit-test/software installation guide.docx
-
+1. software installation /unit-test/software installation guide.docx
+2. run database script using dbeaver  /scripts/db/V1.1.0_ddl_project.sql
 
 ####  start application
 mvn install
