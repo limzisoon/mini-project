@@ -1,6 +1,6 @@
 package com.project.demo.exception;
 
-public class BusinessException extends BaseCheckedException {
+public class BusinessException extends Exception {
 
     static final long serialVersionUID = 0L;
 

@@ -43,9 +43,11 @@ public class LunchController {
             lunch.setCreatedBy(lunchRequestDTO.getCreatedBy());
 
             LunchResponseDTO lunchResponseDTO = lunchService.createLunch(lunch);
+            System.out.println("lunch created :"+lunchResponseDTO.toString());
 
             return new ResponseEntity<>(lunchResponseDTO, HttpStatus.CREATED);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -70,14 +72,16 @@ public class LunchController {
                     int index = (int) (Math.random() * memberList.size());
                     Member member = (Member) memberList.get(index);
                     lunch.setPickedRestaurantCd(member.getRestaurantCd());
+                    System.out.println("PickedRestaurantCd :"+member.getRestaurantCd());
                 }
             }
 
             lunchResponseDTO = lunchService.updateLunch(lunch);
+            System.out.println("lunch updated :"+lunchResponseDTO.toString());
 
             return new ResponseEntity<>(lunchResponseDTO, HttpStatus.OK);
         } catch (Exception e) {
-            lunchResponseDTO.setError(e.getMessage());
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(lunchResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

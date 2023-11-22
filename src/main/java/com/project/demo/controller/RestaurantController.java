@@ -39,12 +39,11 @@ public class RestaurantController {
             if (restaurants.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            System.out.println("size" + restaurants.size());
+            System.out.println("restaurants size" + restaurants.size());
 
             return new ResponseEntity<>(restaurants, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("Exception"+e);
-            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -58,13 +57,13 @@ public class RestaurantController {
             Optional<Restaurant> restaurant = restaurantService.getRestaurantByCd(cd);
 
             if (restaurant.isPresent()) {
+                System.out.println("restaurant : "+restaurant.toString());
                 return new ResponseEntity<>(restaurant.get(), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            System.out.println("Exception"+e);
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

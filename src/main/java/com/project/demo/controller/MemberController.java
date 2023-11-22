@@ -30,7 +30,7 @@ public class MemberController {
 
     @PostMapping(value = "/add-member", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    @Operation(method = "POST", description = "add new member",summary = "add new member and user to select restaurant")
+    @Operation(method = "POST", description = "add new member",summary = "add new member with user selected restaurant")
     public ResponseEntity<MemberResponseDTO> addMember(@RequestBody MemberRequestDTO memberRequestDTO) {
         MemberResponseDTO memberResponseDTO = new MemberResponseDTO();
         try {
@@ -47,11 +47,17 @@ public class MemberController {
             }
 
             memberResponseDTO = memberService.saveMember(member);
+            System.out.println("member added :"+memberResponseDTO.toString());
 
             return new ResponseEntity<>(memberResponseDTO, HttpStatus.CREATED);
-        } catch (Exception e) {
+        }
+        catch (BusinessException e) {
             System.out.println(e.getMessage());
             memberResponseDTO.setError(e.getMessage());
+            return new ResponseEntity<>(memberResponseDTO, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(memberResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -62,9 +68,11 @@ public class MemberController {
     public ResponseEntity<HttpStatus> deleteMember(@PathVariable("id") long id) {
         try {
             memberService.removeMember(id);
+            System.out.println("member record removed with id " + id);
 
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -79,10 +87,11 @@ public class MemberController {
             if (memberList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            System.out.println("size" + memberList.size());
+            System.out.println("memberList size" + memberList.size());
 
             return new ResponseEntity<>(memberList, HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
