@@ -1,10 +1,7 @@
 package com.project.demo.model.request;
 
 import com.project.demo.model.entity.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class LunchRequestDTO  implements Serializable {
 
     private Long id;

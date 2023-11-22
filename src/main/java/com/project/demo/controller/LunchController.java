@@ -59,6 +59,7 @@ public class LunchController {
         LunchResponseDTO lunchResponseDTO = new LunchResponseDTO();
         try {
             Lunch lunch = lunchService.getLunch(lunchRequestDTO.getId());
+            System.out.println("load lunch: "+lunch.toString());
 
             lunch.setStatus(CommonConstant.SESSION_END);
             lunch.setDescription(lunchRequestDTO.getDescription());

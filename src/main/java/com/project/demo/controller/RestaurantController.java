@@ -37,9 +37,10 @@ public class RestaurantController {
             List<Restaurant> restaurants = restaurantService.getRestaurants();
 
             if (restaurants.isEmpty()) {
+                System.out.println("no restaurants found");
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            System.out.println("restaurants size" + restaurants.size());
+            System.out.println("restaurants size: " + restaurants.size());
 
             return new ResponseEntity<>(restaurants, HttpStatus.OK);
         } catch (Exception e) {
@@ -60,6 +61,7 @@ public class RestaurantController {
                 System.out.println("restaurant : "+restaurant.toString());
                 return new ResponseEntity<>(restaurant.get(), HttpStatus.OK);
             } else {
+                System.out.println("no restaurant found with code: "+cd);
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
