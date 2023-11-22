@@ -56,6 +56,7 @@ public class MemberService {
             if(res.isPresent())
             {
                 memberResponseDTO.setRestaurantName(res.get().getName());
+                memberResponseDTO.setRestaurantAddr(res.get().getAddress());
             }
             BeanUtils.copyProperties(member, memberResponseDTO);
             memberResponseDTOList.add(memberResponseDTO);

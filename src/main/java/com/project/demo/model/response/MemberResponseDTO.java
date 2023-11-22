@@ -21,6 +21,8 @@ public class MemberResponseDTO {
 
     private String restaurantName;
 
+    private String restaurantAddr;
+
     private String error;
 
 }
