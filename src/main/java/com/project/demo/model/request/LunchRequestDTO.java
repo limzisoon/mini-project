@@ -17,5 +17,5 @@ public class LunchRequestDTO  implements Serializable {
     private Long id;
     private String description;
     private String createdBy;
-    private List<Member> members;
+    private List<MemberRequestDTO> members;
 }

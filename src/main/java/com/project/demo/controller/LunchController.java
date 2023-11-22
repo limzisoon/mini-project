@@ -3,7 +3,9 @@ package com.project.demo.controller;
 import com.project.demo.constant.CommonConstant;
 import com.project.demo.model.entity.Lunch;
 import com.project.demo.model.entity.Member;
+import com.project.demo.model.entity.Restaurant;
 import com.project.demo.model.request.LunchRequestDTO;
+import com.project.demo.model.request.MemberRequestDTO;
 import com.project.demo.model.response.LunchResponseDTO;
 import com.project.demo.service.LunchService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,13 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -71,7 +71,7 @@ public class LunchController {
             {
                 for (int i = 0; i < memberList.size(); i++) {
                     int index = (int) (Math.random() * memberList.size());
-                    Member member = (Member) memberList.get(index);
+                    MemberRequestDTO member = (MemberRequestDTO) memberList.get(index);
                     lunch.setPickedRestaurantCd(member.getRestaurantCd());
                     System.out.println("PickedRestaurantCd :"+member.getRestaurantCd());
                 }
@@ -84,6 +84,23 @@ public class LunchController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ResponseEntity<>(lunchResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/lunch/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(method = "GET", description = "Get the lunch information by lunch id",summary = "Get the lunch information by lunch id")
+    public ResponseEntity<LunchResponseDTO> getLunchWithMemberById(@PathVariable("id") Long id) {
+        try {
+            System.out.println("getLunchById");
+            LunchResponseDTO lunchResponseDTO = lunchService.getLunchWithMemberById(id);
+
+            System.out.println("lunchResponseDTO : "+lunchResponseDTO.toString());
+            return new ResponseEntity<>(lunchResponseDTO, HttpStatus.OK);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

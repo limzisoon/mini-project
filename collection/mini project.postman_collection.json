@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"description\":\"lunch planning for 2023 Nov 16\",\r\n    \"createdBy\":\"Zi Soon\"\r\n}",
+					"raw": "{   \r\n    \"description\":\"lunch planning for 2023 Nov 22 2pm\",\r\n    \"createdBy\":\"Zi Soon\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Fanny\",\r\n    \"lunchId\":25,\r\n    \"restaurantCd\":\"R002\"\r\n}",
+					"raw": "{\r\n    \"name\":\"MR D\",\r\n    \"lunchId\":40,\r\n    \"restaurantCd\":\"R004\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -65,12 +65,12 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/remove-member/35"
+				"url": "http://localhost:8080/remove-member/38"
 			},
 			"response": []
 		},
 		{
-			"name": "get members by restaurants",
+			"name": "get all members and restaurant by lunch ID",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -86,7 +86,16 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/members/25"
+				"url": "http://localhost:8080/members/36"
+			},
+			"response": []
+		},
+		{
+			"name": "Get lunch with Member Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/lunch/40"
 			},
 			"response": []
 		},
@@ -97,7 +106,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"id\":25,\r\n    \"description\":\"lunch planning for 2023 Nov 16\",\r\n    \"createdBy\":\"Zi Soon\",\r\n    \"members\":[\r\n    {\"name\":\"Alice\",\"restaurantCd\":\"R001\"},\r\n    {\"name\":\"Ben\",\"restaurantCd\":\"R002\"},\r\n    {\"name\":\"Carmen\",\"restaurantCd\":\"R003\"},\r\n    {\"name\":\"David\",\"restaurantCd\":\"R004\"},\r\n    {\"name\":\"Emily\",\"restaurantCd\":\"R005\"}\r\n    ]\r\n}",
+					"raw": "{   \r\n    \"id\":39,\r\n    \"description\":\"lunch planning for 2023 Nov 22 12pm\",\r\n    \"createdBy\":\"Zi Soon\",\r\n    \"members\":[\r\n    {\"name\":\"Alice\",\"restaurantCd\":\"R001\"},\r\n    {\"name\":\"Ben\",\"restaurantCd\":\"R002\"},\r\n    {\"name\":\"Carmen\",\"restaurantCd\":\"R003\"},\r\n    {\"name\":\"David\",\"restaurantCd\":\"R004\"},\r\n    {\"name\":\"Emily\",\"restaurantCd\":\"R005\"}\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
